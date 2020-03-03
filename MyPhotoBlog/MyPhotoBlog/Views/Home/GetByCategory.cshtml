@@ -1,0 +1,24 @@
+﻿@model List<MyPhotoBlog.Models.Entities.Photo>
+@using MyPhotoBlog.Infra
+
+
+<div class="row pt-4 mb-5 text-center">
+    <div class="col-12">
+        <h2 class="text-white mb-4">'@Model.FirstOrDefault().Category.Name' &mdash; @Model.Count @Messages.Photo</h2>
+    </div>
+</div>
+<div class="row align-items-stretch">
+
+    @foreach (var photo in Model)
+    {
+        <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up">
+            <a href="../../images/@photo.Path" class="d-block photo-item" data-fancybox="gallery">
+                <img src="../../images/@photo.Path" alt="@photo.Description" class="img-fluid">
+                <div class="photo-text-more">
+                    <span class="icon icon-search"></span>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+

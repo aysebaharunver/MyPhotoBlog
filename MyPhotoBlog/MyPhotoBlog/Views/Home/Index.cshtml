@@ -1,0 +1,21 @@
+﻿@* Burada kategoriler (boş olmayan ve silinmemiş) gösterilir. Gösterim kısmında her kategoriden bir tane foto ile katyegori adı ve pohoto saısı kullanılır *@
+
+@model List<MyPhotoBlog.Models.Entities.Category>
+
+<div class="row align-items-stretch">
+
+    @foreach (var category in Model)
+    {
+        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up">
+            <a href="@Url.Action("GetByCategory","Home",new {id=category.Id})" class="d-block photo-item">
+                <img src="../../images/@category.Photos.FirstOrDefault().Path" alt="Image" class="img-fluid">
+                <div class="photo-text-more">
+                    <div class="photo-text-more">
+                        <h3 class="heading">@category.Name</h3>
+                        <span class="meta">@category.Photos.Count Fotoğraf</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>

@@ -1,0 +1,32 @@
+﻿@model List<MyPhotoBlog.Models.Entities.Category>
+@{
+    ViewBag.Title = "Photos";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h4>Kategoriler</h4>
+     
+        @using (Html.BeginForm("AddOrUpdateCategory","Admin",FormMethod.Post))
+        {
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4 offset-6">
+                        <input type="text" name="name" placeholder="Kategori Adı Giriniz" class="form-control form-control-sm" />
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="submit" class="btn btn-primary btn-sm" value="Ekle & Kaydet" />
+                    </div>
+                </div>
+            </div>
+        }   
+
+    <ul class="list-group">
+        @foreach (var category in Model)
+        {
+            <li class="list-group-item">
+                @category.Name (@category.Photos.Count)
+            </li>
+        }
+    </ul>
+</div>

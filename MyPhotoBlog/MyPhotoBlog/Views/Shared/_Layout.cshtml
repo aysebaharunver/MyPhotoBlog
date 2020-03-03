@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Foto Albüm &mdash; @ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/shutter/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/Content/shutter/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/shutter/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/shutter/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/shutter/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/shutter/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Content/shutter/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/Content/shutter/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="~/Content/shutter/css/aos.css">
+    <link rel="stylesheet" href="~/Content/shutter/css/fancybox.min.css">
+    <link rel="stylesheet" href="~/Content/shutter/css/style.css">
+
+</head>
+<body>
+    <div class="site-wrap">
+        <div class="site-mobile-menu">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="header-bar d-flex d-lg-block align-items-center" data-aos="fade-left">
+            <div class="site-logo">
+                <a href="@Url.Action("Index","Home")">BAHAR</a>
+            </div>
+
+            <div class="d-inline-block d-xl-none ml-md-0 ml-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+            <div class="main-menu">
+                <ul class="js-clone-nav">
+                    <li class="active"><a href="@Url.Action("Index","Home")">Anasayfa</a></li>
+                    <li><a href="@Url.Action("Index","Home")">Fotoğraflar</a></li>
+                    <li><a href="@Url.Action("About","Home")">Ben</a></li>
+                    <li><a href="@Url.Action("Blog","Home")">Blog</a></li>
+                    <li><a href="@Url.Action("Contact","Home")">İLETİŞİM</a></li>
+
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                Foto Ekle
+                            </button>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("Login","Account")">GİRİŞ</a></li>
+                    }
+
+
+
+                </ul>
+                <ul class="social js-clone-nav">
+                    <li><a href="#"><span class="icon-facebook"></span></a></li>
+                    <li><a href="#"><span class="icon-twitter"></span></a></li>
+                    <li><a href="#"><span class="icon-instagram"></span></a></li>
+                </ul>
+            </div>
+        </header>
+        <main class="main-content">
+            <div class="container-fluid photos">
+
+                @* Burası dinamik olacak alan *@
+
+
+                @RenderBody()
+
+
+
+                <div class="row justify-content-center">
+                    <div class="col-md-12 text-center py-5">
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">
+                        Foto Ekle
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @if (User.IsInRole("admin"))
+                    {
+                        @Html.Action("AddPhoto", "Admin")
+                    }
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="~/Content/shutter/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/shutter/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/Content/shutter/js/jquery-ui.js"></script>
+    <script src="~/Content/shutter/js/popper.min.js"></script>
+    <script src="~/Content/shutter/js/bootstrap.min.js"></script>
+    <script src="~/Content/shutter/js/owl.carousel.min.js"></script>
+    <script src="~/Content/shutter/js/jquery.stellar.min.js"></script>
+    <script src="~/Content/shutter/js/jquery.countdown.min.js"></script>
+    <script src="~/Content/shutter/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/shutter/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/shutter/js/aos.js"></script>
+    <script src="~/Content/shutter/js/jquery.fancybox.min.js"></script>
+    <script src="~/Content/shutter/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
